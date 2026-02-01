@@ -1,9 +1,10 @@
--- Zan Hub Loader
-local base = "https://raw.githubusercontent.com/ilostitfrick/zanshub/main/"
+local source = game:HttpGet(
+    "https://raw.githubusercontent.com/ilostitfrick/zanshub/main/main.lua"
+)
 
-local function fetch(path)
-    return game:HttpGet(base .. path)
+local fn = loadstring(source)
+if fn then
+    fn()
+else
+    warn("Failed to load ZansHub")
 end
-
-local main = loadstring(fetch("main.lua"))
-return main()
